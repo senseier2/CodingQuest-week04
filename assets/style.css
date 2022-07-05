@@ -1,0 +1,50 @@
+/* Style sheet setup */
+* {
+    margin:0px;Rogers Park, Chicago, IL
+    padding:0px;
+    box-sizing:border-box;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body{
+    background-color: lightblue;
+}
+
+.title-card{
+    width:500px;
+    height:500px;
+    flex:auto;
+    border: solid black;
+    justify-content:center;
+    padding:1.25%;
+    background-color: white;
+    border-radius:25px;
+}
+
+.title-card h1{
+    margin:20px;
+}
+
+.title-card p{
+}
+
+.start-quiz{
+    display:block;
+    margin:10px;
+
+}
+
+.Quest-card{
+    width:500px;
+    height:500px;
+    border: solid black;
+    justify-content:center;
+    opacity:100%;
+    padding:1.25%;
+    background-color: white;
+    border-radius:25px;
+}
+
+.Quest-card p{
+    display:inline;
+}
