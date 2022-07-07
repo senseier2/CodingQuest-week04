@@ -25,7 +25,7 @@ body{
     width:600px;
     height:600px;
     flex:auto;
-    border: solid black;
+    /* border: solid black; */
     justify-content:center;
     padding:1.25%;
     background-color: white;
@@ -60,7 +60,7 @@ body{
 .Quest-card{
     width:600px;
     height:600px;
-    border: solid black;
+    /* border: solid black; */
     justify-content:center;
     opacity:100%;
     padding:1.25%;
@@ -100,8 +100,9 @@ body{
     border-radius: 8px;
 }
 
-.option1 div:hover{
-    background-color: aqua;
+.options div:hover {
+    background-color:rgb(1, 87, 87);
+    transition:ease-in;
     cursor: pointer;
 }
 
@@ -110,7 +111,7 @@ body{
     width:600px;
     height:600px;
     flex:auto;
-    border: solid black;
+    /* border: solid black; */
     justify-content:center;
     padding:1.25%;
     background-color: white;
