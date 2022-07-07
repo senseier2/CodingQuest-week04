@@ -92,16 +92,13 @@ body{
     justify-content:end;
 }
 
-.quest-box p{
+#quest-box p{
     font-size:24px;
     margin: 20px;
     text-align: center;
 }
 
-.option1,
-.option2,
-.option3,
-.option4{
+.options div{
     padding:10px;
     font-size:18px;
     margin:20px;

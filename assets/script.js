@@ -5,9 +5,9 @@ var quitButton = document.getElementById("QuitBtn");
 
 //When the Start Quiz Button is Clicked add class.
 startQuizButton.addEventListener("click", function(event) {
-    // event.preventDefault();
     questCard.classList.add("opac");
-    console.log(questCard);
+    questionArray(0);
+
 });
 
 // When the Quit button is clicked this listener will remove the class list Change
@@ -16,6 +16,19 @@ quitButton.addEventListener("click", function(event) {
 });
 
 
+//Taking questions from the Array to add to the Dom
+function questionArray(index){
+    let questTest = document.getElementById("quest-box")
+    let optionTest = document.getElementById("optionAnswer")
+    let questP = "<p>" + questions[index].question + "</p>";
+    let OptionDiv = '<div class="option1><p>' + questions[index].options[0] + '</p></div>'
+    + '<div class="option2><p>' + questions[index].options[1] + '</p></div>' 
+    + '<div class="option3><p>' + questions[index].options[2] + '</p></div>' 
+    + '<div class="option4><p>' + questions[index].options[3] + '</p></div>';
+    
+    questTest.innerHTML = questP;
+    optionTest.innerHTML = OptionDiv;
+}
 
 
 
@@ -36,7 +49,7 @@ let questions = [
             "Some Random text",
             "Banna Cream Pie Sundea"
         ]
-    }
+    },
 
     {
         number: 2,
@@ -48,10 +61,10 @@ let questions = [
             "Oh no what is this",
             "Cascading Style Sheet"
         ]
-    }
+    },
 
     {
-        number: 1,
+        number: 3,
         question: "Test Question1?",
         answer: "Test Answer Correct", 
         options: [
