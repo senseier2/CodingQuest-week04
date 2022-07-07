@@ -9,29 +9,30 @@
 }
 
 body{
-    background-color: lightblue;
+    background-color: cyan;
 }
 
-/* .title-card,
-.Quest-card,
-.results-card{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */
-
-.title-card{
+.title-card,
+.results-card,
+#Quest-card{
     width:600px;
     height:600px;
     flex:auto;
     /* border: solid black; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     justify-content:center;
-    padding:1.25%;
     background-color: white;
-    border-radius:25px;
-    /* opacity: 0; */
+    border: solid grey
 }
+
+.title-card{
+    z-index: 5;
+    opacity: 1;
+}
+
 
 .title-card h1{
     width: 90%;
@@ -57,21 +58,30 @@ body{
     padding:5px;
 }
 
-.Quest-card{
-    width:600px;
-    height:600px;
-    /* border: solid black; */
-    justify-content:center;
-    opacity:100%;
-    padding:1.25%;
-    background-color: white;
-    border-radius:25px;
-    /* opacity:1; */
+.Start-quiz:hover {
+    background-color:rgb(1, 87, 87);
+}
 
+#Quest-card .opac{
+    z-index: 6;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.opac{
+    z-index: 5;
+    opacity: 1;
+    pointer-events: auto;
+    /* transform: translate(-50%, -50%) scale(1); */
 }
 
 .title-quest{
-    display:inline-block;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+
 }
 
 .clock-text{
@@ -92,9 +102,10 @@ body{
 .option2,
 .option3,
 .option4{
-    padding:20px;
+    padding:10px;
     font-size:18px;
-    margin:30px;
+    margin:20px;
+    width:75%;
     background-color:rgb(57, 170, 170);
     color: white;
     border-radius: 8px;
@@ -106,15 +117,3 @@ body{
     cursor: pointer;
 }
 
-
-.results-card{
-    width:600px;
-    height:600px;
-    flex:auto;
-    /* border: solid black; */
-    justify-content:center;
-    padding:1.25%;
-    background-color: white;
-    border-radius:25px;
-    /* opacity: 0; */
-}

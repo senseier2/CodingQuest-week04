@@ -17,11 +17,11 @@
         </p>
         <button class="Start-quiz">Begin the quiz</button>
     </div>
-    <div class="Quest-card">
-        <p class="title-quest">Questionaire</p>
+    <div id="Quest-card">
+        <div class="title-quest">Questionaire</div>
         <div class="timer">
-        <p class="clock-text">Timer</p>
-        <p class="clock">1:00</p>
+        <div class="clock-text">Timer</div>
+        <div class="clock">1:00</div>
         </div>
             <div class="quest-box">
                 <p>
@@ -45,11 +45,13 @@
         <div class="answer-check">
             <span>Correct!</span>
             <span>Wrong!</span>
+            <button class="continueBtn">Continue</button>
+            <button id="QuitBtn">Quit</button>
         </div>
     </div>
     <div class="results-card">
         <img src="">
-        <p>You've completed the Quiz</p>
+        <h3>You've completed the Quiz</h3>
         <p>Your score is</p>
         <p>Enter your initials:</p>
         <input type="text" placeholder="Your initials">
