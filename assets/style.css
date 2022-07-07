@@ -3,48 +3,117 @@
     margin:0px;Rogers Park, Chicago, IL
     padding:0px;
     box-sizing:border-box;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family:Arial;
+    /* Border solid is for testing div width and sizing adjustments */
+    /* border:solid black; */
 }
 
 body{
     background-color: lightblue;
 }
 
+/* .title-card,
+.Quest-card,
+.results-card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
 .title-card{
-    width:500px;
-    height:500px;
+    width:600px;
+    height:600px;
     flex:auto;
     border: solid black;
     justify-content:center;
     padding:1.25%;
     background-color: white;
     border-radius:25px;
+    /* opacity: 0; */
 }
 
 .title-card h1{
-    margin:20px;
+    width: 90%;
+    margin:30px;
+    padding:5px;
+    margin-bottom: 10%;
 }
 
 .title-card p{
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 18%;
 }
 
-.start-quiz{
-    display:block;
-    margin:10px;
-
+.Start-quiz{
+    background-color:darkcyan;
+    color: white;
+    font-size:26px;
+    border-radius: 8px;
+    border:none;
+    padding:5px;
 }
 
 .Quest-card{
-    width:500px;
-    height:500px;
+    width:600px;
+    height:600px;
     border: solid black;
     justify-content:center;
     opacity:100%;
     padding:1.25%;
     background-color: white;
     border-radius:25px;
+    /* opacity:1; */
+
 }
 
-.Quest-card p{
-    display:inline;
+.title-quest{
+    display:inline-block;
+}
+
+.clock-text{
+    justify-content:end;
+}
+
+.clock{
+    justify-content:end;
+}
+
+.quest-box p{
+    font-size:24px;
+    margin: 20px;
+    text-align: center;
+}
+
+.option1,
+.option2,
+.option3,
+.option4{
+    padding:20px;
+    font-size:18px;
+    margin:30px;
+    background-color:rgb(57, 170, 170);
+    color: white;
+    border-radius: 8px;
+}
+
+.option1 div:hover{
+    background-color: aqua;
+    cursor: pointer;
+}
+
+
+.results-card{
+    width:600px;
+    height:600px;
+    flex:auto;
+    border: solid black;
+    justify-content:center;
+    padding:1.25%;
+    background-color: white;
+    border-radius:25px;
+    /* opacity: 0; */
 }
