@@ -3,6 +3,7 @@ var startQuizButton = document.querySelector(".Start-quiz");
 var questCard = document.getElementById("Quest-card");
 var quitButton = document.getElementById("QuitBtn");
 var contButton = document.getElementById("continueBtn");
+const timeCount = document.querySelector("#clock");
 
 const optionTest = document.getElementById("optionAnswer");
 
@@ -11,8 +12,9 @@ startQuizButton.addEventListener("click", function(event) {
     event.preventDefault();
     questCard.classList.add("opac");
     questionArray(que_count);
-
+    timerStart();
 });
+
 
 // When the Quit button is clicked this listener will remove the class list Change
 quitButton.addEventListener("click", function(event) {
@@ -21,6 +23,7 @@ quitButton.addEventListener("click", function(event) {
 });
 
 let que_count = 0;
+let counter = 0;
 
 //When the continue button is click cycle to the next question
 contButton.addEventListener("click", function(event) {
@@ -51,17 +54,29 @@ function questionArray(index){
         option[i].setAttribute("onclick", "optionSelected(this)");
     }
 }
+// A time function
+function timerStart(time) {
+    counter = setInterval(timer, 1000);
+    function timer() {
+        timeCount.count.textContent = time;
+        --time;
+    }
+
+}
 
 function optionSelected(answer){
     let userAns = answer.textContent;
     let correctAnswer = questions[que_count].answer;
     let allOptions = optionTest.children.length;
+
     if(userAns == correctAnswer){
         answer.classList.add("correct");
+        //Writing answer status at the bottom of the question card
         console.log("Answer is Correct");
     }else{
         answer.classList.add("incorrect")
         console.log("Answer is Wrong");
+
     }
 
     //Disabling all options after an option is selected
@@ -71,6 +86,7 @@ function optionSelected(answer){
     }
 
 }
+
 
 
 
