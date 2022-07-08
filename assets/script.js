@@ -88,6 +88,30 @@ let questions = [
             "Incorrect Answer 2",
             "Incorrect Answer 3"
         ]
+    },
+
+    {
+        number: 3,
+        question: "Test Question2?",
+        answer: "Test Answer Correct", 
+        options: [
+            "Correct Answer",
+            "Incorrect Answer",
+            "Incorrect Answer 2",
+            "Incorrect Answer 3"
+        ]
+    },
+
+    {
+        number: 3,
+        question: "Test Question3?",
+        answer: "Test Answer Correct", 
+        options: [
+            "Correct Answer",
+            "Incorrect Answer",
+            "Incorrect Answer 2",
+            "Incorrect Answer 3"
+        ]
     }
 ];
 

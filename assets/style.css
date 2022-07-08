@@ -9,7 +9,7 @@
 }
 
 body{
-    background-color: cyan;
+    background-color: grey;
 }
 
 .title-card,
@@ -36,27 +36,26 @@ body{
 
 
 .title-card h1{
-    width: 90%;
-    margin:30px;
+    width: 80%;
+    margin:50px;
     padding:5px;
     margin-bottom: 10%;
 }
 
 .title-card p{
-    width: 100%;
+    width: 80%;
     font-size: 18px;
     text-align: center;
-    margin-top: 10%;
-    margin-bottom: 18%;
+    margin: 10%;
 }
 
 .Start-quiz{
     background-color:darkcyan;
     color: white;
     font-size:26px;
-    border-radius: 8px;
-    border:none;
-    padding:5px;
+    border:solid rgb(0, 93, 93);
+    padding:8px;
+    margin-left:200px;
 }
 
 .Start-quiz:hover {
