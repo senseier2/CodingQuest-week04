@@ -1,7 +1,7 @@
 /* Style sheet setup */
 * {
     margin:0px;Rogers Park, Chicago, IL
-    padding:0px;
+    padding
     box-sizing:border-box;
     font-family:Arial;
     /* Border solid is for testing div width and sizing adjustments */
@@ -26,6 +26,7 @@ body{
     justify-content:center;
     background-color: white;
     border: solid grey
+    
 }
 
 .title-card{
@@ -98,7 +99,10 @@ body{
     text-align: center;
 }
 
-.options div{
+.option4,
+.option3,
+.option2,
+.option1 {
     padding:10px;
     font-size:18px;
     margin:20px;
@@ -108,7 +112,7 @@ body{
     border-radius: 8px;
 }
 
-.options div:hover {
+#optionAnswer div:hover {
     background-color:rgb(1, 87, 87);
     transition:ease-in;
     cursor: pointer;
