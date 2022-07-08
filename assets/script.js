@@ -36,16 +36,30 @@ function questionArray(index){
     let questTest = document.getElementById("quest-box")
     let optionTest = document.getElementById("optionAnswer")
     let questP = "<p>" + questions[index].number + ". " + questions[index].question + "</p>";
-    let OptionDiv = '<div class="option1"><p>' + questions[index].options[0] + '</p></div>'
-    + '<div class="option2"><p>' + questions[index].options[1] + '</p></div>' 
-    + '<div class="option3"><p>' + questions[index].options[2] + '</p></div>' 
-    + '<div class="option4"><p>' + questions[index].options[3] + '</p></div>';
+    let OptionDiv = '<div class="option"><p>' + questions[index].options[0] + '</p></div>'
+    + '<div class="option"><p>' + questions[index].options[1] + '</p></div>' 
+    + '<div class="option"><p>' + questions[index].options[2] + '</p></div>' 
+    + '<div class="option"><p>' + questions[index].options[3] + '</p></div>';
     
     questTest.innerHTML = questP;
     optionTest.innerHTML = OptionDiv;
+
+
+    const option = optionTest.querySelectorAll(".option");
+    for (let i = 0; i < option.length; i++){
+        option[i].setAttribute("onclick", "optionSelected(this)");
+    }
 }
 
-
+function optionSelected(answer){
+    let userAns = answer.textContent;
+    let correctAnswer = questions[que_count].answer;
+    if(userAns == correctAnswer){
+        console.log("Answer is Correct");
+    }else{
+        console.log("Answer is Wrong");
+    }
+}
 
 
 

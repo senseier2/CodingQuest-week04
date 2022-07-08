@@ -112,10 +112,7 @@ body{
 }
 
 /* Answer options div styling */
-.option4,
-.option3,
-.option2,
-.option1 {
+.option {
     padding:10px;
     font-size:18px;
     margin:20px;
