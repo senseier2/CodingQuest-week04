@@ -2,19 +2,34 @@
 var startQuizButton = document.querySelector(".Start-quiz");
 var questCard = document.getElementById("Quest-card");
 var quitButton = document.getElementById("QuitBtn");
+var contButton = document.getElementById("continueBtn");
+
 
 //When the Start Quiz Button is Clicked add class.
 startQuizButton.addEventListener("click", function(event) {
+    event.preventDefault();
     questCard.classList.add("opac");
-    questionArray(1);
+    questionArray(que_count);
 
 });
 
 // When the Quit button is clicked this listener will remove the class list Change
 quitButton.addEventListener("click", function(event) {
+    event.preventDefault();
     questCard.classList.remove("opac");
 });
 
+let que_count = 0;
+
+//When the continue button is click cycle to the next question
+contButton.addEventListener("click", function(event) {
+    if(que_count < questions.length - 1){
+        que_count++;
+        questionArray(que_count);
+    }else{
+        console.log("questions completed");
+    }
+});
 
 //Taking questions from the Array to add to the Dom
 function questionArray(index){
