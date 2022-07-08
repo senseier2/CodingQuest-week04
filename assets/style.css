@@ -122,6 +122,35 @@ body{
     border-radius: 8px;
 }
 
+/* Correct answer visual queue */
+
+.correct{
+    padding:10px;
+    font-size:18px;
+    margin:20px;
+    width:75%;
+    background-color:rgb(173, 225, 225);
+    color: white;
+    border-radius: 8px;
+}
+
+/* Incorrect answer visual queue */
+.incorrect{
+    padding:10px;
+    font-size:18px;
+    margin:20px;
+    width:75%;
+    background-color:rgb(252, 153, 153);
+    color: white;
+    border-radius: 8px;
+}
+
+/* Disabling selections after User response */
+.disabled{
+    pointer-events:none;
+}
+
+
 /* Answer options hover styling */
 #optionAnswer div:hover {
     background-color:rgb(1, 87, 87);

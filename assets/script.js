@@ -4,6 +4,7 @@ var questCard = document.getElementById("Quest-card");
 var quitButton = document.getElementById("QuitBtn");
 var contButton = document.getElementById("continueBtn");
 
+const optionTest = document.getElementById("optionAnswer");
 
 //When the Start Quiz Button is Clicked add class.
 startQuizButton.addEventListener("click", function(event) {
@@ -34,7 +35,7 @@ contButton.addEventListener("click", function(event) {
 //Taking questions from the Array to add to the Dom
 function questionArray(index){
     let questTest = document.getElementById("quest-box")
-    let optionTest = document.getElementById("optionAnswer")
+    
     let questP = "<p>" + questions[index].number + ". " + questions[index].question + "</p>";
     let OptionDiv = '<div class="option"><p>' + questions[index].options[0] + '</p></div>'
     + '<div class="option"><p>' + questions[index].options[1] + '</p></div>' 
@@ -54,11 +55,21 @@ function questionArray(index){
 function optionSelected(answer){
     let userAns = answer.textContent;
     let correctAnswer = questions[que_count].answer;
+    let allOptions = optionTest.children.length;
     if(userAns == correctAnswer){
+        answer.classList.add("correct");
         console.log("Answer is Correct");
     }else{
+        answer.classList.add("incorrect")
         console.log("Answer is Wrong");
     }
+
+    //Disabling all options after an option is selected
+
+    for(let i = 0; i < allOptions; i++) {
+        optionTest.children[i].classList.add("disabled");
+    }
+
 }
 
 
@@ -109,7 +120,7 @@ let questions = [
             "Sequential",
             "Literal",
             "Asymetrical Recatorization",
-            "Segmental"
+            "Lexical"
         ]
     },
 
