@@ -8,16 +8,19 @@
     /* border:solid black; */
 }
 
+/* body overall color */
 body{
     background-color: grey;
 }
 
+/* Cards overall styling and positioning */
 .title-card,
 .results-card,
 #Quest-card{
     width:600px;
     height:600px;
     flex:auto;
+    /* I haven't decided on the final look of the application */
     /* border: solid black; */
     position: absolute;
     top: 50%;
@@ -29,12 +32,13 @@ body{
     
 }
 
+/* Title card styling is below starting with the starting Zindex value and opacity */
 .title-card{
     z-index: 5;
     opacity: 1;
 }
 
-
+/* Title card H1 styling positioning and spacing */
 .title-card h1{
     width: 80%;
     margin:50px;
@@ -42,6 +46,7 @@ body{
     margin-bottom: 10%;
 }
 
+/* Title card paragraph tag styling and spacing */
 .title-card p{
     width: 80%;
     font-size: 18px;
@@ -49,6 +54,7 @@ body{
     margin: 10%;
 }
 
+/* Button styling for starting the Quiz */
 .Start-quiz{
     background-color:darkcyan;
     color: white;
@@ -58,10 +64,12 @@ body{
     margin-left:200px;
 }
 
+/* Start button hover transition styling */
 .Start-quiz:hover {
     background-color:rgb(1, 87, 87);
 }
 
+/* Question card index and position change test styling */
 #Quest-card .opac{
     z-index: 6;
     opacity: 1;
@@ -69,6 +77,7 @@ body{
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* Class list for the z index testing and positioning - visible card styling */
 .opac{
     z-index: 5;
     opacity: 1;
@@ -76,6 +85,7 @@ body{
     /* transform: translate(-50%, -50%) scale(1); */
 }
 
+/* Question styling and positioning */
 .title-quest{
     height:50px;
     display:flex;
@@ -84,20 +94,24 @@ body{
 
 }
 
+/* Clock text - Timer */
 .clock-text{
     justify-content:end;
 }
 
+/* Clock positioning not completed */
 .clock{
     justify-content:end;
 }
 
+/* Question box p tag styling */
 #quest-box p{
     font-size:24px;
     margin: 20px;
     text-align: center;
 }
 
+/* Answer options div styling */
 .option4,
 .option3,
 .option2,
@@ -111,6 +125,7 @@ body{
     border-radius: 8px;
 }
 
+/* Answer options hover styling */
 #optionAnswer div:hover {
     background-color:rgb(1, 87, 87);
     transition:ease-in;

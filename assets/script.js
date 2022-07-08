@@ -35,7 +35,7 @@ contButton.addEventListener("click", function(event) {
 function questionArray(index){
     let questTest = document.getElementById("quest-box")
     let optionTest = document.getElementById("optionAnswer")
-    let questP = "<p>" + questions[index].question + "</p>";
+    let questP = "<p>" + questions[index].number + ". " + questions[index].question + "</p>";
     let OptionDiv = '<div class="option1"><p>' + questions[index].options[0] + '</p></div>'
     + '<div class="option2"><p>' + questions[index].options[1] + '</p></div>' 
     + '<div class="option3"><p>' + questions[index].options[2] + '</p></div>' 
@@ -49,68 +49,65 @@ function questionArray(index){
 
 
 
-
-
-
 // Questions Array for answer options and answer key
 let questions = [
     {
         number: 1,
-        question: "What does HTML stand for?",
-        answer: "Hyper Text Markup Language", 
+        question: "HTML is the standard ___ language for creating Web pages.",
+        answer: "markup", 
         options: [
-            "Hyper Text Markup Language",
-            "Hippy Miner in a Cave Language",
-            "Some Random text",
-            "Banna Cream Pie Sundea"
+            "scripting",
+            "styling",
+            "romantic",
+            "markup"
         ]
     },
 
     {
         number: 2,
-        question: "What does CSS stand for?",
-        answer: "Cascading Style Sheet", 
+        question: "Inline styles are written within the ___ attribute",
+        answer: "style", 
         options: [
-            "Cinnamon Classic Style Sheet",
-            "I've struck the wrong answer",
-            "Oh no what is this",
-            "Cascading Style Sheet"
+            "style",
+            "stylesheet",
+            "hardon collider",
+            "css"
         ]
     },
 
     {
         number: 3,
-        question: "Test Question1?",
-        answer: "Test Answer Correct", 
+        question: "Which of the following can be used to call a JavaScript Code Snippet?",
+        answer: "Function/Method", 
         options: [
-            "Correct Answer",
-            "Incorrect Answer",
-            "Incorrect Answer 2",
-            "Incorrect Answer 3"
+            "Preprocessor",
+            "Function/Method",
+            "Triggering Event",
+            "CPU throttling"
         ]
     },
 
     {
-        number: 3,
-        question: "Test Question2?",
-        answer: "Test Answer Correct", 
+        number: 4,
+        question: "Which of the following scoping types does JavaScript use?",
+        answer: "Lexical", 
         options: [
-            "Correct Answer",
-            "Incorrect Answer",
-            "Incorrect Answer 2",
-            "Incorrect Answer 3"
+            "Sequential",
+            "Literal",
+            "Asymetrical Recatorization",
+            "Segmental"
         ]
     },
 
     {
-        number: 3,
-        question: "Test Question3?",
-        answer: "Test Answer Correct", 
+        number: 5,
+        question: "Which HTML tag produces a list with bullet points?",
+        answer: "UL", 
         options: [
-            "Correct Answer",
-            "Incorrect Answer",
-            "Incorrect Answer 2",
-            "Incorrect Answer 3"
+            "UL",
+            "OL",
+            "LI",
+            "BL"
         ]
     }
 ];
