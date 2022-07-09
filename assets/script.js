@@ -3,7 +3,7 @@ var startQuizButton = document.querySelector(".Start-quiz");
 var questCard = document.getElementById("Quest-card");
 var quitButton = document.getElementById("QuitBtn");
 var contButton = document.getElementById("continueBtn");
-const timeCount = document.querySelector("#clock");
+const timeCount = document.querySelector("div.clock");
 
 const optionTest = document.getElementById("optionAnswer");
 
@@ -12,7 +12,7 @@ startQuizButton.addEventListener("click", function(event) {
     event.preventDefault();
     questCard.classList.add("opac");
     questionArray(que_count);
-    timerStart();
+    timerStart(60);
 });
 
 
@@ -23,7 +23,7 @@ quitButton.addEventListener("click", function(event) {
 });
 
 let que_count = 0;
-let counter = 0;
+let counter;
 
 //When the continue button is click cycle to the next question
 contButton.addEventListener("click", function(event) {
@@ -58,7 +58,7 @@ function questionArray(index){
 function timerStart(time) {
     counter = setInterval(timer, 1000);
     function timer() {
-        timeCount.count.textContent = time;
+        timeCount.textContent = time;
         --time;
     }
 
