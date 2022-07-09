@@ -4,6 +4,7 @@ var questCard = document.getElementById("Quest-card");
 var quitButton = document.getElementById("QuitBtn");
 var contButton = document.getElementById("continueBtn");
 const timeCount = document.querySelector("div.clock");
+const startTime = 60;
 
 const optionTest = document.getElementById("optionAnswer");
 
@@ -12,7 +13,7 @@ startQuizButton.addEventListener("click", function(event) {
     event.preventDefault();
     questCard.classList.add("opac");
     questionArray(que_count);
-    timerStart(60);
+    timerStart(startTime);
 });
 
 
@@ -25,6 +26,10 @@ quitButton.addEventListener("click", function(event) {
 let que_count = 0;
 let counter;
 
+const resultCard = document.querySelector(".results-card");
+const resultCrd = document.querySelector(".results-card");
+const restartQuiz = resultCard.querySelector(".QuitBtn");
+
 //When the continue button is click cycle to the next question
 contButton.addEventListener("click", function(event) {
     if(que_count < questions.length - 1){
@@ -32,6 +37,7 @@ contButton.addEventListener("click", function(event) {
         questionArray(que_count);
     }else{
         console.log("questions completed");
+        
     }
 });
 
@@ -54,6 +60,8 @@ function questionArray(index){
         option[i].setAttribute("onclick", "optionSelected(this)");
     }
 }
+
+
 // A time function
 function timerStart(time) {
     counter = setInterval(timer, 1000);
@@ -63,6 +71,14 @@ function timerStart(time) {
     }
 
 }
+
+
+//Revealing the results at the end of the quiz.
+// function showResults(){
+//     questCard.classList.remove("opac");
+//     title-card.classList.remove("opac");
+//     resultCard.classList.add("opac");
+// }
 
 function optionSelected(answer){
     let userAns = answer.textContent;
@@ -76,7 +92,6 @@ function optionSelected(answer){
     }else{
         answer.classList.add("incorrect")
         console.log("Answer is Wrong");
-
     }
 
     //Disabling all options after an option is selected
@@ -86,8 +101,6 @@ function optionSelected(answer){
     }
 
 }
-
-
 
 
 // Questions Array for answer options and answer key

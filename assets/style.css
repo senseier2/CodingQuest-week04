@@ -70,12 +70,12 @@ body{
 }
 
 /* Question card index and position change test styling */
-#Quest-card .opac{
+/* #Quest-card .opac{
     z-index: 6;
     opacity: 1;
     pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
-}
+    transform: translate(-50%, -50%) scale(1); */
+/* } */
 
 /* Class list for the z index testing and positioning - visible card styling */
 .opac{
@@ -109,6 +109,11 @@ body{
     font-size:24px;
     margin: 20px;
     text-align: center;
+}
+
+#results-card {
+    opacity:0;
+    z-index: 0;
 }
 
 /* Answer options div styling */
