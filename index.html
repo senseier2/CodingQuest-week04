@@ -8,21 +8,29 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <!-- Questionaire rules and the Start button -->
-    <div class="title-card">
-        <h1>Coding Questionaire Challenge</h1>
-        <hr>
-        <p>
-            Welcome the coding questionaire challenge. To complete the questionaire you will need to answer all off the questions presented in the given amount of time. Incorrect answers will take away 10 seconds from the clock. When time runs out the Questionaire ends. Try to get the highscore!  Good Luck!
-        </p>
-        <button class="Start-quiz">Begin the quiz</button>
+    <!-- Leaderboard -->
+    <div id="leader-card">
+        <h3>Awesome Work!</h3>
+        <p>Your score will be etched into the stars!</p>
+
     </div>
+    <!-- Results card -->
+    <div id="results-card">
+        <img src="">
+        <h3>Congrats! You've completed the Quiz.</h3>
+        <p>Your score is <span class="userScore">0</span> out of <span>5</span></p>
+        <p>Enter your initials:<input type="text" placeholder="Your initials"></p>
+        <div>
+            <!-- Placeholder for score list -->
+        </div>
+        <input type="submit">
+    </div>
+    <!-- Questionair Card -->
     <div id="Quest-card">
         <div class="title-quest">Questionaire</div>
-        <div class="timer">
-        <div class="clock-text">Timer</div>
-        <div class="clock"></div>
-        </div>
+            <div class="timer"></div>
+            <div class="clock-text">Timer</div>
+            <div class="clock"></div>
             <div id="quest-box">
                 <!-- <p>
                     What does the letters in HTML stand for?
@@ -50,14 +58,14 @@
             <button id="QuitBtn">Quit</button>
         </div>
     </div>
-    <div id="results-card">
-        <img src="">
-        <h3>You've completed the Quiz</h3>
-        <p>Your score is</p>
-        <p>Enter your initials:</p>
-        <input type="text" placeholder="Your initials">
-        <input type="submit">
-
+    <!-- Questionaire rules and the Start button -->
+    <div id="title-card">
+        <h1>Coding Questionaire Challenge</h1>
+        <hr>
+        <p>
+            Welcome the coding questionaire challenge. To complete the questionaire you will need to answer all off the questions presented in the given amount of time. Incorrect answers will take away 10 seconds from the clock. When time runs out the Questionaire ends. Try to get the highscore!  Good Luck!
+        </p>
+        <button class="Start-quiz">Begin the quiz</button>
     </div>
 
     <script src="assets/script.js"></script>

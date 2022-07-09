@@ -3,15 +3,30 @@ var startQuizButton = document.querySelector(".Start-quiz");
 var questCard = document.getElementById("Quest-card");
 var quitButton = document.getElementById("QuitBtn");
 var contButton = document.getElementById("continueBtn");
+
 const timeCount = document.querySelector("div.clock");
 const startTime = 60;
+const resultCard = document.getElementById("results-card");
+const titleCard = document.getElementById("title-card");
+
+var scoreTotal = 0
 
 const optionTest = document.getElementById("optionAnswer");
+
+//Dynamically add the page state on load - not working
+// document.addEventListener("DOMContentLoaded", function() {
+//         titleCard.classList.add("opac");
+//   });
+
 
 //When the Start Quiz Button is Clicked add class.
 startQuizButton.addEventListener("click", function(event) {
     event.preventDefault();
     questCard.classList.add("opac");
+    resultCard.classList.remove("opac");
+    resultCard.classList.add("opacNone");
+    titleCard.classList.remove("opac");
+    titleCard.classList.add("opacNone");
     questionArray(que_count);
     timerStart(startTime);
 });
@@ -21,14 +36,15 @@ startQuizButton.addEventListener("click", function(event) {
 quitButton.addEventListener("click", function(event) {
     event.preventDefault();
     questCard.classList.remove("opac");
+
 });
 
 let que_count = 0;
 let counter;
 
-const resultCard = document.querySelector(".results-card");
+
 const resultCrd = document.querySelector(".results-card");
-const restartQuiz = resultCard.querySelector(".QuitBtn");
+const restartQuiz = document.querySelector(".QuitBtn");
 
 //When the continue button is click cycle to the next question
 contButton.addEventListener("click", function(event) {
@@ -37,7 +53,7 @@ contButton.addEventListener("click", function(event) {
         questionArray(que_count);
     }else{
         console.log("questions completed");
-        
+        showResults();
     }
 });
 
@@ -74,11 +90,14 @@ function timerStart(time) {
 
 
 //Revealing the results at the end of the quiz.
-// function showResults(){
-//     questCard.classList.remove("opac");
-//     title-card.classList.remove("opac");
-//     resultCard.classList.add("opac");
-// }
+function showResults(){
+    questCard.classList.remove("opac");
+    questCard.classList.add("opacNone");
+    // titleCard.classList.remove("opac");
+    // titleCard.classList.add("opacNone");
+    resultCard.classList.add("opac");
+    resultCard.classList.remove("opacNone");
+}
 
 function optionSelected(answer){
     let userAns = answer.textContent;
@@ -89,8 +108,9 @@ function optionSelected(answer){
         answer.classList.add("correct");
         //Writing answer status at the bottom of the question card
         console.log("Answer is Correct");
+        scoreTotal++;
     }else{
-        answer.classList.add("incorrect")
+        answer.classList.add("incorrect");
         console.log("Answer is Wrong");
     }
 
