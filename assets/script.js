@@ -3,13 +3,17 @@ var startQuizButton = document.querySelector(".Start-quiz");
 var questCard = document.getElementById("Quest-card");
 var quitButton = document.getElementById("QuitBtn");
 var contButton = document.getElementById("continueBtn");
+var initialSave = document.getElementById("userInitials");
+var saveState = document.getElementById("submitQuiz");
+var finalScore = document.querySelector(".userScore")
 
 const timeCount = document.querySelector("div.clock");
 const startTime = 60;
 const resultCard = document.getElementById("results-card");
 const titleCard = document.getElementById("title-card");
 
-var scoreTotal = 0
+let scoreTotal = 0;
+// let userScore = scoreTotal;
 
 const optionTest = document.getElementById("optionAnswer");
 
@@ -31,12 +35,30 @@ startQuizButton.addEventListener("click", function(event) {
     timerStart(startTime);
 });
 
+//when the save initials button is pressed
+saveState.addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log('hello saveState');
+    console.log(initialSave.value);
+    console.log(scoreTotal);
+    
+    var userData = {
+      initials: initialSave.value,
+      score: scoreTotal.value,
+    };
+    
+    localStorage.setItem("userData", JSON.stringify(userData));
+    // renderMessage();
+    
+});
+
+
 
 // When the Quit button is clicked this listener will remove the class list Change
 quitButton.addEventListener("click", function(event) {
     event.preventDefault();
-    questCard.classList.remove("opac");
-
+    // questCard.classList.remove("opac");
+    location.reload(); //testing the reload feature for quit game.
 });
 
 let que_count = 0;
@@ -99,6 +121,13 @@ function showResults(){
     resultCard.classList.remove("opacNone");
 }
 
+//Adding Score to the completed Quiz screen
+function finalscore() {
+      document.querySelector(".userScore").textContent = scoreTotal;
+}
+
+
+//User options are selected and tallied, console logging.
 function optionSelected(answer){
     let userAns = answer.textContent;
     let correctAnswer = questions[que_count].answer;

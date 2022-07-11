@@ -17,13 +17,19 @@
     <!-- Results card -->
     <div id="results-card">
         <img src="">
-        <h3>Congrats! You've completed the Quiz.</h3>
+        <h1>Congrats!</h1>
+        <h1>You've completed the Quiz.</h1>
+        <hr>
         <p>Your score is <span class="userScore">0</span> out of <span>5</span></p>
-        <p>Enter your initials:<input type="text" placeholder="Your initials"></p>
+
+        <p>Enter your initials: <input type="text" placeholder="Your initials" id="userInitials"></p>
         <div>
             <!-- Placeholder for score list -->
         </div>
-        <input type="submit">
+        <div class="submitInitials">
+            <button id="submitQuiz">Submit</button>
+            <button id="QuitBtn">Quit</button>
+        </div>
     </div>
     <!-- Questionair Card -->
     <div id="Quest-card">
@@ -36,6 +42,7 @@
                     What does the letters in HTML stand for?
                 </p> -->
             </div>
+            <hr>
         <div id="optionAnswer">
             <!-- <div class="option1">
                 <p>Hyper Text Markup Language</p>

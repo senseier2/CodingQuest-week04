@@ -5,7 +5,7 @@
     box-sizing:border-box;
     font-family:Arial;
     /* Border solid is for testing div width and sizing adjustments */
-    border:solid black;
+    /* border:solid black; */
 }
 
 /* body overall color */
@@ -114,13 +114,28 @@ body{
 #quest-box p{
     font-size:24px;
     margin: 20px;
-    text-align: center;
+    text-align: auto;
 }
 
 /* #results-card {
     opacity:0;
     z-index: 0;
 } */
+
+.answer-check{
+    display:flex;
+    justify-content:end;
+}
+
+#QuitBtn,
+#continueBtn{
+    background-color:darkcyan;
+    color: white;
+    font-size:26px;
+    border:solid rgb(0, 93, 93);
+    padding:8px;
+    margin-left:5px;
+}
 
 /* Answer options div styling */
 .option {
@@ -169,15 +184,33 @@ body{
     cursor: pointer;
 }
 
-#results-card h3{
+#results-card h1{
+    text-align:center;
     width: 80%;
-    margin:35px;
+    margin:15px;
     padding:20px;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
+
+}
+
+#results-card p{
+    font-size:24px;
+    margin: 20px;
+    text-align: center;
 }
 
 /* Temporary settings for styling work */
-#results-card{
+/* #results-card{
     z-index: 7;
     opacity: 1;
+} */
+
+.submitInitials button{
+    background-color:darkcyan;
+    color: white;
+    font-size:26px;
+    border:solid rgb(0, 93, 93);
+    padding:8px;
+    margin-left:240px;
+    margin-top:30px;
 }
