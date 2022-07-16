@@ -49,17 +49,22 @@ saveState.addEventListener("click", function(event) {
     
     localStorage.setItem("userData", JSON.stringify(userData));
     // renderMessage();
-    
 });
 
 
 
 // When the Quit button is clicked this listener will remove the class list Change
-quitButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    // questCard.classList.remove("opac");
-    location.reload(); //testing the reload feature for quit game.
-});
+// quitButton.addEventListener("click", function(event) {
+//     // event.preventDefault();
+//     questCard.classList.remove("opac");
+//     questCard.classList.add("opacNone");
+//     resultCard.classList.remove("opac");
+//     resultCard.classList.add("opacNone");
+//     titleCard.classList.add("opac");
+//     titleCard.classList.remove("opacNone");
+
+//     // location.reload(); //testing the reload feature for quit game.
+// });
 
 let que_count = 0;
 let counter;
@@ -68,7 +73,7 @@ let counter;
 const resultCrd = document.querySelector(".results-card");
 const restartQuiz = document.querySelector(".QuitBtn");
 
-//When the continue button is click cycle to the next question
+//When the continue button is clicked cycle to the next question
 contButton.addEventListener("click", function(event) {
     if(que_count < questions.length - 1){
         que_count++;
@@ -113,11 +118,10 @@ function timerStart(time) {
             showResults();
         }
     }
-
 }
 
 
-//Revealing the results at the end of the quiz.
+//Revealing the results card at the end of the quiz
 function showResults(){
     questCard.classList.remove("opac");
     questCard.classList.add("opacNone");
@@ -126,6 +130,10 @@ function showResults(){
     resultCard.classList.add("opac");
     resultCard.classList.remove("opacNone");
 }
+
+//Adding the results data to the results card.
+
+
 
 //Adding Score to the completed Quiz screen
 function finalscore() {
