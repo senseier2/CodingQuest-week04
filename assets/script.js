@@ -8,10 +8,12 @@ var saveState = document.getElementById("submitQuiz");
 var finalScore = document.querySelector(".userScore")
 
 const timeCount = document.querySelector("div.clock");
-const startTime = 60;
+
 const resultCard = document.getElementById("results-card");
 const titleCard = document.getElementById("title-card");
 
+var wrongAns = -10;
+var startTime = 60;
 let scoreTotal = 0;
 // let userScore = scoreTotal;
 
@@ -33,6 +35,7 @@ startQuizButton.addEventListener("click", function(event) {
     titleCard.classList.add("opacNone");
     questionArray(que_count);
     timerStart(startTime);
+
 });
 
 //when the save initials button is pressed
@@ -68,6 +71,8 @@ saveState.addEventListener("click", function(event) {
 
 let que_count = 0;
 let counter;
+let activeTime = 60;
+// let time;
 
 
 const resultCrd = document.querySelector(".results-card");
@@ -106,19 +111,37 @@ function questionArray(index){
 
 
 // A time function with conditions for when the timer ends.
+// function timerStart(time) {
+//     counter = setInterval(timer, 1000);
+//     function timer() {
+//         if (time > 0) {
+//         timeCount.textContent = time;
+//         --time;
+
+//         }else{
+//             console.log("bye bye")
+//             showResults();
+//         }
+//     }
+// }
+
+// setTimeout(function() { }, 60), then you'd need to start the setTimeout as part of a variable.  So something like myCountdown = setTimeout(function() { // your stuff }, 60).   Then as the user gets wrong answers and loses time, you'd update the variable with a method for updating timers.  I don't recall it off the top of my head
+
+
+// Test a seperate timer as the first solution isn't working as intended
 function timerStart(time) {
-    counter = setInterval(timer, 1000);
-    function timer() {
-        if (time > 0) {
+    myClock = setInterval(function(){
         timeCount.textContent = time;
         --time;
-
-        }else{
-            console.log("bye bye")
+        --activeTime;
+        if (time < 0) {
+            clearInterval(myClock);
             showResults();
         }
-    }
+    }, 1000);
 }
+
+
 
 
 //Revealing the results card at the end of the quiz
@@ -155,7 +178,10 @@ function optionSelected(answer){
     }else{
         answer.classList.add("incorrect");
         console.log("Answer is Wrong");
+        //Subtract 10 seconds from timer
     }
+
+  
 
     //Disabling all options after an option is selected
 

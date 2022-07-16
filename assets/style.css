@@ -129,7 +129,7 @@ body{
     justify-content:end;
 }
 
-#QuitBtn,
+/* #QuitBtn, */
 #continueBtn{
     background-color:darkcyan;
     color: white;
