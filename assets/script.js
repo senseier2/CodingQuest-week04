@@ -100,12 +100,18 @@ function questionArray(index){
 }
 
 
-// A time function
+// A time function with conditions for when the timer ends.
 function timerStart(time) {
     counter = setInterval(timer, 1000);
     function timer() {
+        if (time > 0) {
         timeCount.textContent = time;
         --time;
+
+        }else{
+            console.log("bye bye")
+            showResults();
+        }
     }
 
 }

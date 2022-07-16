@@ -30,6 +30,7 @@ body{
     justify-content:center;
     background-color: white;
     border: solid grey;
+    padding:10px;
 }
 
 /* Title card styling is below starting with the starting Zindex value and opacity */
@@ -115,6 +116,7 @@ body{
     font-size:24px;
     margin: 20px;
     text-align: auto;
+    font-weight:bold;
 }
 
 /* #results-card {
