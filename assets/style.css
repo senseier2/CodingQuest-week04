@@ -1,7 +1,7 @@
 /* Style sheet setup */
 * {
-    margin:0px;Rogers Park, Chicago, IL
-    padding
+    margin:0px;
+    padding:0;
     box-sizing:border-box;
     font-family:Arial;
     /* Border solid is for testing div width and sizing adjustments */
@@ -216,3 +216,8 @@ body{
     margin-left:240px;
     margin-top:30px;
 }
+
+/* #leader-card {
+    opacity: 1;
+    z-index: 8;
+} */

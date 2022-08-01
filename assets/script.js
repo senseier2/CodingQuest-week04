@@ -6,16 +6,20 @@ var contButton = document.getElementById("continueBtn");
 var initialSave = document.getElementById("userInitials");
 var saveState = document.getElementById("submitQuiz");
 var finalScore = document.querySelector(".userScore")
-
+var submitBtn = document.querySelector(".submitInitials");
 const timeCount = document.querySelector("div.clock");
 
 const resultCard = document.getElementById("results-card");
 const titleCard = document.getElementById("title-card");
+const leaderCard = document.getElementById("leader-card");
 
 var wrongAns = -10;
 var startTime = 60;
 let scoreTotal = 0;
 // let userScore = scoreTotal;
+
+let scoreArr = [];
+
 
 const optionTest = document.getElementById("optionAnswer");
 
@@ -26,6 +30,17 @@ const optionTest = document.getElementById("optionAnswer");
 
 
 //When the Start Quiz Button is Clicked add class.
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    questCard.classList.add("opacNone");
+    resultCard.classList.remove("opac");
+    resultCard.classList.add("opacNone");
+    // titleCard.classList.remove("opac");
+    // titleCard.classList.add("opacNone");
+    leaderCard.classList.add("opac");
+    leaderCard.classList.remove("opacNone");
+});
+
 startQuizButton.addEventListener("click", function(event) {
     event.preventDefault();
     questCard.classList.add("opac");
@@ -33,6 +48,7 @@ startQuizButton.addEventListener("click", function(event) {
     resultCard.classList.add("opacNone");
     titleCard.classList.remove("opac");
     titleCard.classList.add("opacNone");
+    leaderCard.classList.add("opacNone");
     questionArray(que_count);
     timerStart(startTime);
 
@@ -50,8 +66,10 @@ saveState.addEventListener("click", function(event) {
       score: scoreTotal.value,
     };
     
-    localStorage.setItem("userData", JSON.stringify(userData));
+    scoreArr.push(userData);
+    localStorage.setItem("player scores", JSON.stringify(scoreArr));
     // renderMessage();
+    console.log(scoreArr)
 });
 
 
@@ -109,29 +127,10 @@ function questionArray(index){
     }
 }
 
-
-// A time function with conditions for when the timer ends.
-// function timerStart(time) {
-//     counter = setInterval(timer, 1000);
-//     function timer() {
-//         if (time > 0) {
-//         timeCount.textContent = time;
-//         --time;
-
-//         }else{
-//             console.log("bye bye")
-//             showResults();
-//         }
-//     }
-// }
-
-// setTimeout(function() { }, 60), then you'd need to start the setTimeout as part of a variable.  So something like myCountdown = setTimeout(function() { // your stuff }, 60).   Then as the user gets wrong answers and loses time, you'd update the variable with a method for updating timers.  I don't recall it off the top of my head
-
-
 // Test a seperate timer as the first solution isn't working as intended
 function timerStart(time) {
     myClock = setInterval(function(){
-        timeCount.textContent = time;
+        timeCount.textContent = activeTime;
         --time;
         --activeTime;
         if (time < 0) {
@@ -154,14 +153,18 @@ function showResults(){
     resultCard.classList.remove("opacNone");
 }
 
-//Adding the results data to the results card.
+//Adding the results data to the leaderboard card.
+
+function leaderBoard() {
+    console.log(hello);
+}
 
 
 
 //Adding Score to the completed Quiz screen
-function finalscore() {
-      document.querySelector(".userScore").textContent = scoreTotal;
-}
+// function finalscore() {
+//       document.querySelector(".userScore").textContent = scoreTotal;
+// }
 
 
 //User options are selected and tallied, console logging.
@@ -175,16 +178,18 @@ function optionSelected(answer){
         //Writing answer status at the bottom of the question card
         console.log("Answer is Correct");
         scoreTotal++;
+        finalScore.textContent = scoreTotal; //Write the score to the results page
     }else{
         answer.classList.add("incorrect");
         console.log("Answer is Wrong");
         //Subtract 10 seconds from timer
+        activeTime -= 10;
+
     }
 
   
 
-    //Disabling all options after an option is selected
-
+ //Disabling all options after an option is selected
     for(let i = 0; i < allOptions; i++) {
         optionTest.children[i].classList.add("disabled");
     }
