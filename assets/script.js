@@ -8,10 +8,15 @@ var saveState = document.getElementById("submitQuiz");
 var finalScore = document.querySelector(".userScore")
 var submitBtn = document.querySelector(".submitInitials");
 const timeCount = document.querySelector("div.clock");
+var playerTable = document.querySelector(".player-table");
 
 const resultCard = document.getElementById("results-card");
 const titleCard = document.getElementById("title-card");
 const leaderCard = document.getElementById("leader-card");
+//testing high score issue
+const NO_OF_HIGH_SCORES = 10;
+const HIGH_SCORES = 'highscores';
+
 
 var wrongAns = -10;
 var startTime = 60;
@@ -27,6 +32,12 @@ const optionTest = document.getElementById("optionAnswer");
 // document.addEventListener("DOMContentLoaded", function() {
 //         titleCard.classList.add("opac");
 //   });
+
+//Attemping to fix the leaderboard issue
+const highScoreString = localStorage.getItem(HIGH_SCORES);
+const highScores = JSON.parse(highScoreString) ?? [];
+
+
 
 
 //When the Start Quiz Button is Clicked add class.
@@ -60,16 +71,25 @@ saveState.addEventListener("click", function(event) {
     console.log('hello saveState');
     console.log(initialSave.value);
     console.log(scoreTotal);
+
+    let scoreArr = [];
     
     var userData = {
       initials: initialSave.value,
-      score: scoreTotal.value,
+      score: scoreTotal,
     };
     
     scoreArr.push(userData);
     localStorage.setItem("player scores", JSON.stringify(scoreArr));
     // renderMessage();
     console.log(scoreArr)
+
+    //Get local storage items for leaderboard
+   let playerResults = JSON.parse(localStorage.getItem("player scores"));
+
+   console.log(playerResults);
+
+
 });
 
 
