@@ -1,5 +1,6 @@
 //Adding the Quiz start button for testing
 var startQuizButton = document.querySelector(".Start-quiz");
+var endBtn = document.querySelector(".end-app");
 var questCard = document.getElementById("Quest-card");
 var quitButton = document.getElementById("QuitBtn");
 var contButton = document.getElementById("continueBtn");
@@ -13,9 +14,6 @@ var playerTable = document.querySelector(".player-table");
 const resultCard = document.getElementById("results-card");
 const titleCard = document.getElementById("title-card");
 const leaderCard = document.getElementById("leader-card");
-//testing high score issue
-const NO_OF_HIGH_SCORES = 10;
-const HIGH_SCORES = 'highscores';
 
 
 var wrongAns = -10;
@@ -23,7 +21,7 @@ var startTime = 60;
 let scoreTotal = 0;
 // let userScore = scoreTotal;
 
-let scoreArr = [];
+const scoreArr = [];
 
 
 const optionTest = document.getElementById("optionAnswer");
@@ -32,13 +30,6 @@ const optionTest = document.getElementById("optionAnswer");
 // document.addEventListener("DOMContentLoaded", function() {
 //         titleCard.classList.add("opac");
 //   });
-
-//Attemping to fix the leaderboard issue
-const highScoreString = localStorage.getItem(HIGH_SCORES);
-const highScores = JSON.parse(highScoreString) ?? [];
-
-
-
 
 //When the Start Quiz Button is Clicked add class.
 submitBtn.addEventListener("click", function(event) {
@@ -55,6 +46,7 @@ submitBtn.addEventListener("click", function(event) {
 startQuizButton.addEventListener("click", function(event) {
     event.preventDefault();
     questCard.classList.add("opac");
+    questCard.classList.remove("opacNone");
     resultCard.classList.remove("opac");
     resultCard.classList.add("opacNone");
     titleCard.classList.remove("opac");
@@ -65,14 +57,38 @@ startQuizButton.addEventListener("click", function(event) {
 
 });
 
+//When the End button is pressed on the Leaderboard Card
+endBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    questCard.classList.add("opacNone");
+    resultCard.classList.remove("opac");
+    resultCard.classList.add("opacNone");
+    titleCard.classList.add("opac");
+    titleCard.classList.remove("opacNone");
+    leaderCard.classList.add("opacNone");
+    leaderCard.classList.remove("opac");
+
+    cleanUp();
+});
+
+//function to cleanup data
+function cleanUp(){
+    console.log("active time", activeTime);
+    console.log("question count", que_count);
+    console.log("start time", startTime);
+    console.log(scoreArr);
+    scoreTotal = 0;
+    activeTime = 0;
+
+}
+
+
 //when the save initials button is pressed
 saveState.addEventListener("click", function(event) {
     event.preventDefault();
-    console.log('hello saveState');
     console.log(initialSave.value);
     console.log(scoreTotal);
 
-    let scoreArr = [];
     
     var userData = {
       initials: initialSave.value,
@@ -84,32 +100,13 @@ saveState.addEventListener("click", function(event) {
     // renderMessage();
     console.log(scoreArr)
 
-    //Get local storage items for leaderboard
-   let playerResults = JSON.parse(localStorage.getItem("player scores"));
-
-   console.log(playerResults);
-
-
 });
 
 
 
-// When the Quit button is clicked this listener will remove the class list Change
-// quitButton.addEventListener("click", function(event) {
-//     // event.preventDefault();
-//     questCard.classList.remove("opac");
-//     questCard.classList.add("opacNone");
-//     resultCard.classList.remove("opac");
-//     resultCard.classList.add("opacNone");
-//     titleCard.classList.add("opac");
-//     titleCard.classList.remove("opacNone");
-
-//     // location.reload(); //testing the reload feature for quit game.
-// });
-
 let que_count = 0;
-let counter;
-let activeTime = 60;
+//let counter;
+//let activeTime = 0;
 // let time;
 
 
@@ -124,6 +121,7 @@ contButton.addEventListener("click", function(event) {
     }else{
         console.log("questions completed");
         showResults();
+        que_count = 0;
     }
 });
 
@@ -147,15 +145,20 @@ function questionArray(index){
     }
 }
 
+
+
 // Test a seperate timer as the first solution isn't working as intended
 function timerStart(time) {
-    myClock = setInterval(function(){
+   var myClock = setInterval(function(){
         timeCount.textContent = activeTime;
-        --time;
-        --activeTime;
-        if (time < 0) {
+        let activeTime = 60;
+        if (time > 0) {
+            //--time;
+            --activeTime;
+            console.log(activeTime)
+        } else {
             clearInterval(myClock);
-            showResults();
+            showResults(); 
         }
     }, 1000);
 }
@@ -167,8 +170,6 @@ function timerStart(time) {
 function showResults(){
     questCard.classList.remove("opac");
     questCard.classList.add("opacNone");
-    // titleCard.classList.remove("opac");
-    // titleCard.classList.add("opacNone");
     resultCard.classList.add("opac");
     resultCard.classList.remove("opacNone");
 }
@@ -178,13 +179,6 @@ function showResults(){
 function leaderBoard() {
     console.log(hello);
 }
-
-
-
-//Adding Score to the completed Quiz screen
-// function finalscore() {
-//       document.querySelector(".userScore").textContent = scoreTotal;
-// }
 
 
 //User options are selected and tallied, console logging.
@@ -207,7 +201,10 @@ function optionSelected(answer){
 
     }
 
-  
+//reset the score total when quiz is restarted
+function scoreReset() {
+    finalScore.textContent = 0;  //resetting the textcontent to 0
+}
 
  //Disabling all options after an option is selected
     for(let i = 0; i < allOptions; i++) {
