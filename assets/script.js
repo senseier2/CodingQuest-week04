@@ -9,7 +9,8 @@ var saveState = document.getElementById("submitQuiz");
 var finalScore = document.querySelector(".userScore")
 var submitBtn = document.querySelector(".submitInitials");
 const timeCount = document.querySelector("div.clock");
-var playerTable = document.querySelector(".player-table");
+var playerScores = document.querySelector(".player-scores");
+var answerStatus = document.querySelector('.AnswerStat');
 
 const resultCard = document.getElementById("results-card");
 const titleCard = document.getElementById("title-card");
@@ -17,8 +18,8 @@ const leaderCard = document.getElementById("leader-card");
 
 
 var wrongAns = -10;
-var startTime = 60;
-let scoreTotal = 0;
+var startTime = 75;
+//let scoreTotal = 0;
 // let userScore = scoreTotal;
 
 const scoreArr = [];
@@ -53,8 +54,7 @@ startQuizButton.addEventListener("click", function(event) {
     titleCard.classList.add("opacNone");
     leaderCard.classList.add("opacNone");
     questionArray(que_count);
-    timerStart(startTime);
-
+    timerStart(activeTime = 60);
 });
 
 //When the End button is pressed on the Leaderboard Card
@@ -79,35 +79,38 @@ function cleanUp(){
     console.log(scoreArr);
     scoreTotal = 0;
     activeTime = 0;
-
+    
 }
 
 
 //when the save initials button is pressed
 saveState.addEventListener("click", function(event) {
     event.preventDefault();
-    console.log(initialSave.value);
-    console.log(scoreTotal);
-
     
-    var userData = {
+    var userData = {  //storing userData Initials and score which is the activeTime
       initials: initialSave.value,
-      score: scoreTotal,
+      score:activeTime,
     };
     
     scoreArr.push(userData);
     localStorage.setItem("player scores", JSON.stringify(scoreArr));
     // renderMessage();
     console.log(scoreArr)
-
+    let displayedScore = JSON.parse(localStorage.getItem("player scores"))
+    for (i=0; i < displayedScore[i].length; i++) {
+       // git items from local storage and append to page.
+        let player1 = document.createElement('li')
+        player1.textContent = displayedScore.initials[i];
+        playerScores.appendChild(player1);
+    }
 });
 
 
 
 let que_count = 0;
-//let counter;
-//let activeTime = 0;
-// let time;
+let counter;
+let activeTime = 60;
+let time;
 
 
 const resultCrd = document.querySelector(".results-card");
@@ -121,9 +124,11 @@ contButton.addEventListener("click", function(event) {
     }else{
         console.log("questions completed");
         showResults();
+        clearInterval(myClock);
         que_count = 0;
     }
 });
+
 
 //Taking questions from the Array to add to the Dom
 function questionArray(index){
@@ -147,22 +152,20 @@ function questionArray(index){
 
 
 
-// Test a seperate timer as the first solution isn't working as intended
+// SetInterval time and display timer function
 function timerStart(time) {
    var myClock = setInterval(function(){
         timeCount.textContent = activeTime;
-        let activeTime = 60;
         if (time > 0) {
-            //--time;
+            --time;
             --activeTime;
-            console.log(activeTime)
+            console.log(activeTime);
         } else {
             clearInterval(myClock);
-            showResults(); 
+            console.log('Times UP!');
         }
     }, 1000);
 }
-
 
 
 
@@ -191,10 +194,12 @@ function optionSelected(answer){
         answer.classList.add("correct");
         //Writing answer status at the bottom of the question card
         console.log("Answer is Correct");
-        scoreTotal++;
+        //scoreTotal++;
+        answerStatus.textContent = 'Correct!'; //New* to write answer status
         finalScore.textContent = scoreTotal; //Write the score to the results page
     }else{
         answer.classList.add("incorrect");
+        answerStatus.textContent = 'Wrong'; //New* to write Answer Status
         console.log("Answer is Wrong");
         //Subtract 10 seconds from timer
         activeTime -= 10;
