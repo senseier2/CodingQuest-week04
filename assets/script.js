@@ -9,7 +9,7 @@ var saveState = document.getElementById("submitQuiz");
 var finalScore = document.querySelector(".userScore")
 var submitBtn = document.querySelector(".submitInitials");
 const timeCount = document.querySelector("div.clock");
-var playerScores = document.querySelector(".player-scores");
+// var playerScores = document.querySelector(".player-scores");
 var answerStatus = document.querySelector('.AnswerStat');
 
 const resultCard = document.getElementById("results-card");
@@ -38,8 +38,6 @@ submitBtn.addEventListener("click", function(event) {
     questCard.classList.add("opacNone");
     resultCard.classList.remove("opac");
     resultCard.classList.add("opacNone");
-    // titleCard.classList.remove("opac");
-    // titleCard.classList.add("opacNone");
     leaderCard.classList.add("opac");
     leaderCard.classList.remove("opacNone");
 });
@@ -54,7 +52,8 @@ startQuizButton.addEventListener("click", function(event) {
     titleCard.classList.add("opacNone");
     leaderCard.classList.add("opacNone");
     questionArray(que_count);
-    timerStart(activeTime = 60);
+    timerStart(myClock = activeTime);
+
 });
 
 //When the End button is pressed on the Leaderboard Card
@@ -67,7 +66,6 @@ endBtn.addEventListener("click", function(event) {
     titleCard.classList.remove("opacNone");
     leaderCard.classList.add("opacNone");
     leaderCard.classList.remove("opac");
-
     cleanUp();
 });
 
@@ -77,8 +75,9 @@ function cleanUp(){
     console.log("question count", que_count);
     console.log("start time", startTime);
     console.log(scoreArr);
-    scoreTotal = 0;
     activeTime = 0;
+    que_count = 0;
+    
     
 }
 
@@ -96,20 +95,24 @@ saveState.addEventListener("click", function(event) {
     localStorage.setItem("player scores", JSON.stringify(scoreArr));
     // renderMessage();
     console.log(scoreArr)
-    let displayedScore = JSON.parse(localStorage.getItem("player scores"))
-    for (i=0; i < displayedScore[i].length; i++) {
-       // git items from local storage and append to page.
-        let player1 = document.createElement('li')
-        player1.textContent = displayedScore.initials[i];
-        playerScores.appendChild(player1);
-    }
+    leaderBoard(userData);//testing
+    // let displayedScore = JSON.parse(localStorage.getItem("player scores"))
+    // console.log(displayedScore)
+
+    // for (i=0; i < displayedScore[i].length; i++) {
+    //    // git items from local storage and append to page.
+    //     let userScore = displayedScore[i];
+    //     let li = document.createElement('li');
+    //     li.textContent = userScore
+
+    //     li.appendChild(userScore);
+    //     playerScores.appendChild(li);
+    // }
 });
-
-
 
 let que_count = 0;
 let counter;
-let activeTime = 60;
+let activeTime = 75;
 let time;
 
 
@@ -121,13 +124,19 @@ contButton.addEventListener("click", function(event) {
     if(que_count < questions.length - 1){
         que_count++;
         questionArray(que_count);
+        clearStatus();
     }else{
         console.log("questions completed");
         showResults();
-        clearInterval(myClock);
         que_count = 0;
+    
     }
 });
+
+//Clearing the question status whenever a new question is asked
+function clearStatus() {
+    answerStatus.textContent = '';
+}
 
 
 //Taking questions from the Array to add to the Dom
@@ -142,7 +151,7 @@ function questionArray(index){
     
     questTest.innerHTML = questP;
     optionTest.innerHTML = OptionDiv;
-
+    
 
     const option = optionTest.querySelectorAll(".option");
     for (let i = 0; i < option.length; i++){
@@ -151,23 +160,19 @@ function questionArray(index){
 }
 
 
-
-// SetInterval time and display timer function
 function timerStart(time) {
-   var myClock = setInterval(function(){
-        timeCount.textContent = activeTime;
-        if (time > 0) {
+    var myClock = setInterval(function(){
+         timeCount.textContent = activeTime;
+         if (activeTime === 0) {
+            clearInterval(myClock)
+            console.log('Your Time is UP!')
+         } else {
             --time;
             --activeTime;
             console.log(activeTime);
-        } else {
-            clearInterval(myClock);
-            console.log('Times UP!');
-        }
-    }, 1000);
-}
-
-
+         }
+     }, 1000);
+ }
 
 //Revealing the results card at the end of the quiz
 function showResults(){
@@ -180,9 +185,24 @@ function showResults(){
 //Adding the results data to the leaderboard card.
 
 function leaderBoard() {
-    console.log(hello);
-}
 
+    let displayedScore = JSON.parse(localStorage.getItem("player scores"));
+    console.log(displayedScore + "leaderboard")
+    let playerScores = document.querySelector('.player-scores');
+
+    for (let i = 0; i < displayedScore.length; i++) {
+       // git items from local storage and append to page.
+        let userScore = displayedScore[i];
+        console.log(userScore);
+        let liTag = document.createElement("li");
+        console.log(liTag);
+
+        liTag.innerHTML = displayedScore[i].initials + '-' + displayedScore[i].score;
+        console.log(liTag);
+        playerScores.appendChild(liTag);
+        console.log(playerScores);
+    }
+}
 
 //User options are selected and tallied, console logging.
 function optionSelected(answer){
@@ -196,7 +216,7 @@ function optionSelected(answer){
         console.log("Answer is Correct");
         //scoreTotal++;
         answerStatus.textContent = 'Correct!'; //New* to write answer status
-        finalScore.textContent = scoreTotal; //Write the score to the results page
+        finalScore.textContent = activeTime; //Write the score to the results page
     }else{
         answer.classList.add("incorrect");
         answerStatus.textContent = 'Wrong'; //New* to write Answer Status
@@ -204,7 +224,7 @@ function optionSelected(answer){
         //Subtract 10 seconds from timer
         activeTime -= 10;
 
-    }
+}
 
 //reset the score total when quiz is restarted
 function scoreReset() {
@@ -212,7 +232,7 @@ function scoreReset() {
 }
 
  //Disabling all options after an option is selected
-    for(let i = 0; i < allOptions; i++) {
+for(let i = 0; i < allOptions; i++) {
         optionTest.children[i].classList.add("disabled");
     }
 

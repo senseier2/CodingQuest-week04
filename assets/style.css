@@ -217,6 +217,10 @@ body{
     margin-top:30px;
 }
 
+.player-scores {
+    height: 400px;
+}
+
 /* #leader-card {
     opacity: 1;
     z-index: 8;
