@@ -4,8 +4,6 @@
     padding:0;
     box-sizing:border-box;
     font-family:Arial;
-    /* Border solid is for testing div width and sizing adjustments */
-    /* border:solid black; */
 }
 
 /* body overall color */
@@ -21,8 +19,6 @@ body{
     width:600px;
     height:600px;
     flex:auto;
-    /* I haven't decided on the final look of the application */
-    /* border: solid black; */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -32,12 +28,6 @@ body{
     border: solid grey;
     padding:10px;
 }
-
-/* Title card styling is below starting with the starting Zindex value and opacity */
-/* #title-card{
-    z-index:1;
-    opacity:1;
-} */
 
 /* Title card H1 styling positioning and spacing */
 #title-card h1{
@@ -69,14 +59,6 @@ body{
 .Start-quiz:hover {
     background-color:rgb(1, 87, 87);
 }
-
-/* Question card index and position change test styling */
-/* #Quest-card .opac{
-    z-index: 6;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1); */
-/* } */
 
 /* Class list for the z index testing and positioning - visible card styling */
 .opac{
@@ -118,11 +100,6 @@ body{
     text-align: auto;
     font-weight:bold;
 }
-
-/* #results-card {
-    opacity:0;
-    z-index: 0;
-} */
 
 .answer-check{
     display:flex;
@@ -201,12 +178,6 @@ body{
     text-align: center;
 }
 
-/* Temporary settings for styling work */
-/* #results-card{
-    z-index: 7;
-    opacity: 1;
-} */
-
 .submitInitials button{
     background-color:darkcyan;
     color: white;
@@ -218,10 +189,33 @@ body{
 }
 
 .player-scores {
-    height: 400px;
+    height: 300px;
 }
 
-/* #leader-card {
-    opacity: 1;
-    z-index: 8;
-} */
+#leader-card {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+#leader-card li {
+    list-style-type: none;
+    margin-top: 5%;
+}
+
+#leader-card h2 {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#leader-card p {
+    text-align:center;
+}
+
+#leader-card button {
+    background-color:darkcyan;
+    color: white;
+    font-size:26px;
+    border:solid rgb(0, 93, 93);
+    padding:8px;
+    margin-left:5px;
+}
