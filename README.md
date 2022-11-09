@@ -1,21 +1,50 @@
-# CodingQuest-week04
-Coding test to review our coding knowledge - Week 4 challenge
 
-The user has requested to quiz application that will allow the user to test their knowlege of Web development. The functionality of the quiz application will be the following.
+    
+    
 
-when the user click the Begin quiz button they will be presented with several multiple choice questions which must be answered within the given span of time.
+# Project Title: Coding Questionair ER2
 
-![](assets/Begin.JPG)
+## Description
+    Coding Questionaire will test your knowlege of general computer sciences and you basic coding vocabulary.  
 
-Image of the Title screen of the application:
-![](assets/Title%20card%20with%20rules.JPG)
+- - - - -
 
-Upon choosing an incorrect answer the user will lose 10 seconds of time on the clock.
+## Table of Contents
 
-At the end of the quiz the users score is recored and they will be able to add their initials so that they can track their success.
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributors](#contributors)
+* [Test](#test)
+* [Questions](#questions)
 
-The scores will be saved to a leaderboard on which the user can compare their high scores.
 
-If you are seeing this part of the read me, that means I didn't make it.   
 
-I'm still debugging things that didn't work out as planned.
+![Coding Questionaire](../../../../../../../C:/Users/Sen/bootcamp/homework/week04/CodingQuest-week04/assets/Title%20card%20with%20rules.JPG)
+
+Here is a link to my Github repository: 
+https://github.com/senseier2/CodingQuest-week04
+
+And a link to the live Pages website:
+https://senseier2.github.io/CodingQuest-week04/
+
+## Installation
+    The Coding Questionaire Challenge is a live web application.  To visit the questionaire just click or navigate to the questionaire URL.
+
+## Usage
+    To test your knowlege and seek oppurtunities to develop your coding knowlege.
+
+## License
+    This application is  covered under the [Unlicense] license.
+
+## Contributors
+    StudyGroup - special mention to Nick C. and Ryan S. for the assistance this week.
+
+## Test Instructions
+    We are testing you, so no need to test us.  but if you wanted to play around with the questionaire feel free to download the repository and check out the questions array.  You can add new questions, or even change the numbers of questions if needed. 
+
+## Questions
+
+Please feel free to send questions via my GitHub profile: [senseier2](https://github.com/senseier2)
+Or email me via: eric.mcghee@northwestern.edu
+    
